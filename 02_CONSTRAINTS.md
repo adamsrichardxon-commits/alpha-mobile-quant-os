@@ -1,0 +1,7 @@
+- Budget: $0
+- Mobile-only development
+- Binance Testnet only
+- No paid APIs
+- No VPS allowed
+- Free-tier services only
+- Must tolerate service downtime
