@@ -1,122 +1,158 @@
-SYSTEM TECHNICAL DEBT REGISTER
+ALPHAMOBILE QUANT OS — TECHNICAL DEBT REGISTER
 
-This file tracks ALL weaknesses, inefficiencies, and unresolved issues in the system.
+PURPOSE
 
-Purpose:
-Prevent silent degradation of system quality over time.
+Track all known weaknesses.
 
-No issue should remain untracked.
-
-────────────────────────────
-
-FORMAT FOR ALL ENTRIES:
-
-DEBT ID:
-Date:
-Issue:
-Cause:
-Impact:
-Severity: (LOW / MEDIUM / HIGH / CRITICAL)
-Proposed Fix:
-Status: (OPEN / IN PROGRESS / RESOLVED)
+Technical debt must remain visible.
 
 ────────────────────────────
 
-CURRENT TECHNICAL DEBT
+DEBT FORMAT
+
+Debt ID
+
+Issue
+
+Severity
+
+Repair Cost
+
+Risk Exposure
+
+Priority Score
+
+Proposed Fix
+
+Status
 
 ────────────────────────────
 
-DEBT 001
-Date: 2026-06-08
-Issue:
-Signal Engine does not yet exist
+SCORING
 
-Cause:
-System still in setup phase
+Severity
 
-Impact:
-No actual trading logic available
-
-Severity:
+LOW
+MEDIUM
+HIGH
 CRITICAL
 
-Proposed Fix:
-Build Signal Engine v1 (liquidity sweep + MSS detection logic)
+Priority Score
 
-Status:
+Severity × Risk Exposure
+
+Higher scores receive priority.
+
+────────────────────────────
+
+TD-001
+
+Issue
+
+Signal Engine not implemented.
+
+Severity
+
+CRITICAL
+
+Repair Cost
+
+High
+
+Risk Exposure
+
+10
+
+Priority Score
+
+100
+
+Proposed Fix
+
+Build Signal Engine.
+
+Status
+
 OPEN
 
 ────────────────────────────
 
-DEBT 002
-Date: 2026-06-08
-Issue:
-No data pipeline connected to Binance API
+TD-002
 
-Cause:
-Infrastructure phase not started
+Issue
 
-Impact:
-System cannot process real market data
+Backtesting Engine not implemented.
 
-Severity:
+Severity
+
 CRITICAL
 
-Proposed Fix:
-Implement data collection layer using Binance API + Supabase
+Repair Cost
 
-Status:
+High
+
+Risk Exposure
+
+10
+
+Priority Score
+
+100
+
+Proposed Fix
+
+Build Backtesting Framework.
+
+Status
+
 OPEN
 
 ────────────────────────────
 
-DEBT 003
-Date: 2026-06-08
-Issue:
-No backtesting engine implemented
+TD-003
 
-Cause:
-Phase 4 not started
+Issue
 
-Impact:
-No validation of trading strategy possible
+Execution Layer not implemented.
 
-Severity:
-CRITICAL
+Severity
 
-Proposed Fix:
-Build backtesting framework for historical simulation
-
-Status:
-OPEN
-
-────────────────────────────
-
-DEBT 004
-Date: 2026-06-08
-Issue:
-No execution system connected to Binance Testnet
-
-Cause:
-Execution layer not implemented
-
-Impact:
-Cannot simulate real trade execution
-
-Severity:
 HIGH
 
-Proposed Fix:
-Build execution module with order placement + logging
+Repair Cost
 
-Status:
+High
+
+Risk Exposure
+
+8
+
+Priority Score
+
+64
+
+Proposed Fix
+
+Build Execution Layer.
+
+Status
+
 OPEN
 
 ────────────────────────────
 
-RULES
+DEBT RULES
 
-- Technical debt must always be visible
-- No hidden system weaknesses allowed
-- Debt must be resolved in priority order (CRITICAL → LOW)
-- No new feature may be added if CRITICAL debt remains unresolved
+Critical debt must be reviewed before introducing new features.
+
+Debt cannot be hidden.
+
+Resolved debt remains documented.
+
+────────────────────────────
+
+NO NEW FEATURE RULE
+
+No new feature may enter active development while unresolved CRITICAL debt exists unless a formal exception is recorded in the Decision Ledger.
+
+END OF DOCUMENT
