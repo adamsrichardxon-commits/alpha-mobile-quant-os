@@ -1,50 +1,124 @@
-PROJECT CONSTRAINTS
+ALPHAMOBILE QUANT OS — CONSTRAINTS
 
-1. BUDGET CONSTRAINT
-- Total budget: $0
-- No paid APIs allowed
-- No VPS or paid servers allowed
+PURPOSE
 
-2. HARDWARE CONSTRAINT
-- System must run on mobile phone (Samsung Galaxy A04)
-- No heavy local computation allowed
+This document defines immutable project constraints.
 
-3. INFRASTRUCTURE CONSTRAINT
-- Only free-tier services allowed:
-  - GitHub (storage + version control)
-  - Supabase free tier (database + functions)
-  - Hugging Face Spaces (optional compute)
-  - Telegram bot API (control interface)
-  - Binance Testnet (execution environment)
+Constraints override preferences.
 
-4. MARKET CONSTRAINT
-- Asset: BTC/USDT only
-- Timeframe: 5-minute data only
-- No multi-asset expansion allowed without explicit validation
+Constraints override convenience.
 
-5. STRATEGY CONSTRAINT
-- Only rule-based strategies allowed (no guessing)
-- No discretionary trading logic
-- Every signal must be deterministic and reproducible
+Constraints override assumptions.
 
-6. RISK CONSTRAINT
-- Max risk per trade: 1%
-- Max open positions: 1
-- Stop loss is mandatory for every trade
-- No trade without predefined invalidation
+────────────────────────────
 
-7. VALIDATION CONSTRAINT
-- No live trading until:
-  - 500+ backtested trades
-  - Positive expectancy proven
-  - Risk metrics validated
+FINANCIAL CONSTRAINTS
 
-8. SYSTEM BEHAVIOR CONSTRAINT
-- System must tolerate downtime of external services
-- System must recover state automatically
-- No assumption of 24/7 uptime
+Budget:
 
-9. PROHIBITED ACTIONS
-- No live trading before validation
-- No adding features without documentation in Project OS
-- No changing architecture without updating DECISIONS file
+Exactly $0.
+
+Allowed:
+
+- Free Tier Services
+- Open Source Software
+
+Prohibited:
+
+- Paid APIs
+- Paid VPS
+- Paid Data Providers
+- Paid Trading Tools
+- Paid Indicators
+
+────────────────────────────
+
+HARDWARE CONSTRAINTS
+
+Primary Device:
+
+Samsung Galaxy A04
+
+Requirements:
+
+- Mobile-first workflow
+- Cloud-first computation
+- Minimal local resource usage
+
+────────────────────────────
+
+INFRASTRUCTURE CONSTRAINTS
+
+Approved Stack:
+
+- GitHub
+- Supabase
+- Binance Spot Testnet
+- Telegram
+- Hugging Face Spaces
+- Acode
+- Termux
+
+New infrastructure requires:
+
+- Decision entry
+- Risk review
+- Complexity review
+
+────────────────────────────
+
+RESEARCH CONSTRAINTS
+
+No hypothesis may be treated as fact.
+
+No strategy may be considered valid without evidence.
+
+No optimization may occur before validation.
+
+No deployment may occur before approval gates are passed.
+
+────────────────────────────
+
+OPERATIONAL CONSTRAINTS
+
+All significant changes require:
+
+- Decision Ledger entry
+- Progress update
+- Risk review
+
+Undocumented changes are prohibited.
+
+────────────────────────────
+
+RISK CONSTRAINTS
+
+Maximum risk per trade:
+
+1%
+
+No exceptions.
+
+No override mechanism exists.
+
+────────────────────────────
+
+DEPLOYMENT CONSTRAINTS
+
+No live trading.
+
+No real capital.
+
+No production deployment.
+
+Until roadmap phases are completed and approved.
+
+────────────────────────────
+
+FINAL RULE
+
+If a proposed action violates a documented constraint:
+
+The action is automatically rejected.
+
+END OF DOCUMENT
