@@ -1,91 +1,107 @@
-SYSTEM RESEARCH LOG
+ALPHAMOBILE QUANT OS — RESEARCH LOG
 
-This file stores ALL trading hypotheses, experiments, and research outcomes.
+PURPOSE
 
-Purpose:
-Track what works, what fails, and why — using structured evidence.
+Maintain a permanent record of all research activities.
 
-No strategy is accepted without research evidence.
-
-────────────────────────────
-
-FORMAT FOR ALL ENTRIES:
-
-RESEARCH ID:
-Date:
-Hypothesis:
-Market Condition:
-Method:
-Data Used:
-Result:
-Statistical Outcome:
-Conclusion:
-Status: (UNTESTED / VALIDATED / REJECTED)
+Research must be reproducible.
 
 ────────────────────────────
 
-CURRENT RESEARCH ITEMS
+RESEARCH ENTRY FORMAT
+
+Research ID
+
+Date
+
+Hypothesis ID
+
+Objective
+
+Assumptions Used
+
+Dataset
+
+Sample Size
+
+Methodology
+
+Benchmarks
+
+Results
+
+Statistical Significance
+
+Decision
+
+Next Action
 
 ────────────────────────────
 
-RESEARCH 001
-Date: 2026-06-08
-Hypothesis:
-Liquidity sweep followed by market structure shift increases probability of successful continuation trades on BTC/USDT 5M timeframe.
+EXAMPLE ENTRY
 
-Market Condition:
-5-minute BTC/USDT data, mixed volatility
+Research ID
 
-Method:
-To be tested via backtesting engine
+R-001
 
-Data Used:
-Historical OHLCV data (to be collected)
+Date
 
-Result:
-Not yet tested
+2026-06-08
 
-Statistical Outcome:
-Unknown
+Hypothesis ID
 
-Conclusion:
-UNTESTED
+H-001
 
-Status: UNTESTED
+Objective
 
-────────────────────────────
+Evaluate liquidity sweep hypothesis.
 
-RESEARCH 002
-Date: 2026-06-08
-Hypothesis:
-Trades taken only during clear trend sessions outperform random time entries.
+Assumptions Used
 
-Market Condition:
-All market sessions
+A-001
+A-002
 
-Method:
-Session-based filtering backtest
+Dataset
 
-Data Used:
-To be collected
+BTCUSDT 5-minute
 
-Result:
-Not yet tested
+Sample Size
 
-Statistical Outcome:
-Unknown
+1000 trades
 
-Conclusion:
-UNTESTED
+Methodology
 
-Status: UNTESTED
+Historical simulation
+
+Benchmarks
+
+Random Entry
+Trend Following
+
+Results
+
+Pending
+
+Statistical Significance
+
+Pending
+
+Decision
+
+Pending
+
+Next Action
+
+Continue testing
 
 ────────────────────────────
 
 RESEARCH RULES
 
-- No hypothesis is valid without data testing
-- No emotional or subjective conclusions allowed
-- All results must be reproducible
-- Failed hypotheses are valuable outcomes
-- Only validated research can enter SIGNAL ENGINE
+All conclusions must reference evidence.
+
+All research must reference a hypothesis.
+
+All hypothesis testing must be logged.
+
+END OF DOCUMENT
