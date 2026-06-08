@@ -1,112 +1,370 @@
-SYSTEM RISK REGISTER
+ALPHAMOBILE QUANT OS — RISK REGISTER
 
-This file tracks ALL known risks in the system.
+PURPOSE
 
-Purpose:
-Prevent financial loss, system failure, and hidden operational breakdowns.
+This document tracks all known risks.
 
-No risk may be ignored or undocumented.
+Any undocumented risk is treated as UNKNOWN.
+
+Unknown risks are considered HIGH PRIORITY.
 
 ────────────────────────────
 
-1. MARKET RISKS
+RISK CLASSIFICATION
 
-- Sudden volatility spikes (liquidity gaps)
-- Fake breakouts / stop hunts
-- Low liquidity periods
-- Unexpected news events affecting BTC price
+CRITICAL
+Can destroy project viability.
+
+HIGH
+Can significantly damage performance or reliability.
+
+MEDIUM
+Can degrade system quality.
+
+LOW
+Limited impact.
+
+────────────────────────────
+
+MARKET RISKS
+
+R-001
+
+Category:
+Market
+
+Risk:
+Extreme volatility events
+
+Severity:
+HIGH
+
+Impact:
+Invalid signals and large drawdowns
 
 Mitigation:
-- Strict stop-loss enforcement
-- 5-minute timeframe filtering
-- No trading during extreme volatility conditions (future rule)
+Volatility filters
+Session restrictions
+Risk controls
+
+Status:
+OPEN
 
 ────────────────────────────
 
-2. STRATEGY RISKS
+R-002
 
-- Overfitting to historical data
-- False signal generation
-- Weak edge in real market conditions
-- Strategy degradation over time
+Category:
+Market
+
+Risk:
+Regime change
+
+Severity:
+CRITICAL
+
+Impact:
+Strategy edge disappears
 
 Mitigation:
-- Walk-forward validation
-- Minimum 500 trade backtesting requirement
-- Continuous performance monitoring
+Regime testing
+Continuous validation
+
+Status:
+OPEN
 
 ────────────────────────────
 
-3. EXECUTION RISKS
+STRATEGY RISKS
 
-- Binance API failures
-- Order rejection or delays
-- Duplicate order execution
-- Incorrect position sizing
+R-003
+
+Category:
+Strategy
+
+Risk:
+No genuine statistical edge
+
+Severity:
+CRITICAL
+
+Impact:
+Long-term failure guaranteed
 
 Mitigation:
-- Execution confirmation checks
-- Retry logic for failed orders
-- Risk engine validation before execution
+Benchmark testing
+Hypothesis validation
+
+Status:
+OPEN
 
 ────────────────────────────
 
-4. DATA RISKS
+R-004
 
-- Missing or incomplete market data
-- Incorrect OHLCV candles
-- API downtime or rate limits
+Category:
+Strategy
+
+Risk:
+Curve fitting
+
+Severity:
+CRITICAL
+
+Impact:
+False confidence
 
 Mitigation:
-- Data validation checks
-- Redundant logging in Supabase
-- Retry on failed data fetch
+Out-of-sample testing
+Walk-forward testing
+
+Status:
+OPEN
 
 ────────────────────────────
 
-5. INFRASTRUCTURE RISKS
+EXECUTION RISKS
 
-- Supabase downtime
-- GitHub repository sync issues
-- Telegram bot failure
-- Network connectivity issues
+R-005
+
+Category:
+Execution
+
+Risk:
+Duplicate order placement
+
+Severity:
+HIGH
+
+Impact:
+Position inflation
 
 Mitigation:
-- Stateless recovery design
-- Persistent storage in database
-- System restart capability from PROJECT_OS
+Order id validation
+Execution audit logging
+
+Status:
+OPEN
 
 ────────────────────────────
 
-6. HUMAN ERROR RISKS
+R-006
 
-- Incorrect configuration changes
-- Wrong file edits
-- Misinterpretation of system state
+Category:
+Execution
+
+Risk:
+Incorrect position sizing
+
+Severity:
+CRITICAL
+
+Impact:
+Capital destruction
 
 Mitigation:
-- Confirmation prompts before critical actions
-- Clear documentation in all system files
-- Strict step-by-step execution rules
+Risk layer approval
+Sizing validation
+
+Status:
+OPEN
 
 ────────────────────────────
 
-7. FINANCIAL RISKS
+DATA RISKS
 
-- Loss of testnet capital (simulation inconsistency)
-- Risk miscalculation in position sizing logic
+R-007
+
+Category:
+Data
+
+Risk:
+Missing candles
+
+Severity:
+HIGH
+
+Impact:
+Invalid backtests
 
 Mitigation:
-- Fixed 1% risk per trade rule
-- Mandatory stop-loss enforcement
-- No trades without risk engine approval
+Gap detection
+Data integrity checks
+
+Status:
+OPEN
 
 ────────────────────────────
 
-RISK MANAGEMENT RULE
+R-008
 
-If a risk is not documented:
-→ It is considered UNKNOWN
-→ Unknown risks must be treated as HIGH PRIORITY
+Category:
+Data
 
-No system behavior is allowed to bypass risk evaluation.
+Risk:
+Corrupted historical data
+
+Severity:
+CRITICAL
+
+Impact:
+Research invalidation
+
+Mitigation:
+Checksums
+Validation procedures
+
+Status:
+OPEN
+
+────────────────────────────
+
+INFRASTRUCTURE RISKS
+
+R-009
+
+Category:
+Infrastructure
+
+Risk:
+Supabase outage
+
+Severity:
+HIGH
+
+Impact:
+Data unavailable
+
+Mitigation:
+Recovery procedures
+Retry logic
+
+Status:
+OPEN
+
+────────────────────────────
+
+R-010
+
+Category:
+Infrastructure
+
+Risk:
+GitHub repository corruption
+
+Severity:
+MEDIUM
+
+Impact:
+Loss of governance records
+
+Mitigation:
+Repository backups
+
+Status:
+OPEN
+
+────────────────────────────
+
+OPERATIONAL RISKS
+
+R-011
+
+Category:
+Operations
+
+Risk:
+Wrong environment variables
+
+Severity:
+HIGH
+
+Impact:
+System malfunction
+
+Mitigation:
+Deployment checklist
+
+Status:
+OPEN
+
+────────────────────────────
+
+R-012
+
+Category:
+Operations
+
+Risk:
+Incorrect API credentials
+
+Severity:
+HIGH
+
+Impact:
+Execution failure
+
+Mitigation:
+Credential verification
+
+Status:
+OPEN
+
+────────────────────────────
+
+R-013
+
+Category:
+Operations
+
+Risk:
+Multiple cron jobs running simultaneously
+
+Severity:
+CRITICAL
+
+Impact:
+Duplicate execution
+
+Mitigation:
+Execution locking
+
+Status:
+OPEN
+
+────────────────────────────
+
+AI RISKS
+
+R-014
+
+Category:
+AI Governance
+
+Risk:
+AI introduces undocumented changes
+
+Severity:
+CRITICAL
+
+Impact:
+Architecture drift
+
+Mitigation:
+Decision Ledger requirement
+
+Status:
+OPEN
+
+────────────────────────────
+
+MASTER RULE
+
+No risk may be accepted without:
+
+1. Documentation
+2. Severity assessment
+3. Mitigation plan
+4. Monitoring mechanism
+
+END OF DOCUMENT
