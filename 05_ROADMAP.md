@@ -1,144 +1,206 @@
-SYSTEM ROADMAP
+ALPHAMOBILE QUANT OS — MASTER ROADMAP
 
-This document defines the step-by-step execution plan for building the BTC/USDT trading research system.
+PURPOSE
 
-It ensures structured progression from research → validation → automation.
+This roadmap defines the only approved build sequence.
 
-────────────────────────────
-
-PHASE 1 — SYSTEM SETUP (PROJECT OS)
-Goal: Build system memory and structure
-
-Tasks:
-- Create PROJECT_OS repository
-- Define all system files
-- Establish governance rules
-- Define architecture
-
-Output:
-- Fully structured PROJECT_OS
-- System governance active
-
-Status: IN PROGRESS
+No phase may be skipped.
 
 ────────────────────────────
 
-PHASE 2 — DATA INFRASTRUCTURE
-Goal: Establish reliable market data pipeline
+PHASE 1
 
-Tasks:
-- Connect Binance API (testnet first)
-- Store BTC/USDT 5-minute OHLCV data
-- Set up Supabase database tables
-- Validate data consistency
+PROJECT OS INITIALIZATION
 
-Output:
-- Clean historical dataset
-- Real-time data feed
+Goal:
 
-Status: NOT STARTED
+Establish governance.
 
-────────────────────────────
+Deliverables:
 
-PHASE 3 — SIGNAL ENGINE v1
-Goal: Build first rule-based detection system
+- Project OS
+- Decision System
+- Progress Tracking
+- Validation Framework
 
-Tasks:
-- Define liquidity sweep logic
-- Define market structure shift rules
-- Define entry conditions
-- Define invalidation rules
+Status:
 
-Output:
-- Signal generation logic (no trading yet)
-
-Status: NOT STARTED
+COMPLETE
 
 ────────────────────────────
 
-PHASE 4 — BACKTESTING SYSTEM
-Goal: Test strategy on historical data
+PHASE 2
 
-Tasks:
-- Build backtest engine (Python later)
-- Run 500+ trade simulations
-- Measure expectancy
-- Measure drawdown and win rate
+DATA INFRASTRUCTURE
 
-Output:
-- Statistical performance report
+Goal:
 
-Status: NOT STARTED
+Acquire reliable BTC/USDT data.
+
+Deliverables:
+
+- Binance connection
+- Supabase schema
+- Data ingestion
+- Data validation
+
+Success Criteria:
+
+- Stable collection
+- No missing candles
+- Recovery procedures documented
 
 ────────────────────────────
 
-PHASE 5 — VALIDATION PHASE
-Goal: Confirm strategy robustness
+PHASE 3
 
-Tasks:
-- Out-of-sample testing
-- Walk-forward validation
+STRATEGY SPECIFICATION
+
+Goal:
+
+Convert trading ideas into precise definitions.
+
+Deliverables:
+
+- Entry rules
+- Exit rules
+- Invalidation rules
+- Session rules
+- Edge hypothesis
+
+Success Criteria:
+
+Strategy becomes mathematically testable.
+
+────────────────────────────
+
+PHASE 4
+
+SIGNAL ENGINE
+
+Goal:
+
+Implement strategy detection logic.
+
+Deliverables:
+
+- Setup detection
+- Signal generation
+- Event logging
+
+Success Criteria:
+
+Signal generation is deterministic.
+
+────────────────────────────
+
+PHASE 5
+
+BACKTESTING FRAMEWORK
+
+Goal:
+
+Evaluate hypotheses.
+
+Deliverables:
+
+- Historical simulations
+- Performance reports
+- Trade logs
+
+Success Criteria:
+
+Minimum 1000 trades.
+
+────────────────────────────
+
+PHASE 6
+
+VALIDATION FRAMEWORK
+
+Goal:
+
+Reject weak systems.
+
+Required Tests:
+
+- Out-of-sample
+- Walk-forward
 - Regime testing
-- Anti-overfitting checks
+- Stress testing
 
-Output:
-- Validation report
-- Strategy approval or rejection
+Success Criteria:
 
-Status: NOT STARTED
+Pass all validation gates.
 
 ────────────────────────────
 
-PHASE 6 — PAPER TRADING
-Goal: Simulate real-time execution without risk
+PHASE 7
 
-Tasks:
-- Connect signal engine to simulated execution
-- Log all trades
-- Monitor live conditions
+PAPER TRADING
 
-Output:
-- Live performance data (simulated)
+Goal:
 
-Status: NOT STARTED
+Evaluate real-time behavior.
 
-────────────────────────────
+Success Criteria:
 
-PHASE 7 — AUTOMATION (TESTNET)
-Goal: Fully automated trading on Binance Testnet
-
-Tasks:
-- Connect execution layer
-- Enable order placement
-- Enable stop-loss and take-profit
-- Add Telegram monitoring
-
-Output:
-- Fully automated testnet bot
-
-Status: NOT STARTED
+Consistent execution.
+No governance violations.
 
 ────────────────────────────
 
-PHASE 8 — OPTIMIZATION
-Goal: Improve only validated strategy components
+PHASE 8
 
-Tasks:
-- Analyze performance data
-- Remove weak components
-- Improve robust signals only
+TESTNET AUTOMATION
 
-Output:
-- Optimized strategy version
+Goal:
 
-Status: NOT STARTED
+Full automation.
+
+Success Criteria:
+
+Stable operation.
+Risk controls functioning.
 
 ────────────────────────────
 
-FINAL RULE
+PHASE 9
 
-No phase may begin until previous phase is validated and completed.
+OPTIMIZATION
 
-No shortcuts allowed.
+Goal:
 
-No live trading until Phase 5 is passed successfully.
+Improve validated components only.
+
+Restrictions:
+
+No optimization without evidence.
+
+────────────────────────────
+
+PHASE 10
+
+PRODUCTION READINESS REVIEW
+
+Goal:
+
+Determine whether deployment is justified.
+
+Possible Outcomes:
+
+APPROVED
+
+REJECTED
+
+RESEARCH REQUIRED
+
+────────────────────────────
+
+MASTER RULE
+
+A failed phase blocks all future phases.
+
+No shortcuts.
+
+No exceptions.
