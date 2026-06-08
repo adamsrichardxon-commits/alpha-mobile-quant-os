@@ -1,131 +1,291 @@
-SYSTEM ARCHITECTURE
+ALPHAMOBILE QUANT OS — SYSTEM ARCHITECTURE
 
-This document defines how the BTC/USDT trading system is structured.
+PURPOSE
 
-It is NOT strategy logic.
-It is NOT trading rules.
+This document defines the system architecture.
 
-It defines system components and how they interact.
+It specifies how components interact.
 
-────────────────────────────
+It does NOT define trading strategy.
 
-1. CORE SYSTEM OVERVIEW
+It does NOT define optimization logic.
 
-The system is composed of 5 main layers:
-
-A. DATA LAYER
-B. SIGNAL LAYER
-C. RISK LAYER
-D. EXECUTION LAYER
-E. CONTROL & MONITORING LAYER
+It exists to ensure architectural stability.
 
 ────────────────────────────
 
-2. DATA LAYER
+ARCHITECTURAL PRINCIPLES
 
-Purpose:
-Collect and store market data.
+1. SEPARATION OF CONCERNS
+
+Data collection must never generate signals.
+
+Signal generation must never execute trades.
+
+Risk management must approve every trade.
+
+Execution must never bypass risk controls.
+
+Audit systems must record all actions.
+
+2. DETERMINISTIC BEHAVIOR
+
+All system decisions must be reproducible.
+
+No component may depend on memory from previous AI conversations.
+
+3. FAILURE IS EXPECTED
+
+Every component must assume:
+
+- outages occur
+- APIs fail
+- data becomes corrupted
+- deployments break
+
+Recovery mechanisms are mandatory.
+
+4. AUDITABILITY
+
+Every significant event must be logged.
+
+Nothing important may happen silently.
+
+────────────────────────────
+
+SYSTEM LAYERS
+
+LAYER 1 — PROJECT GOVERNANCE
 
 Components:
-- Binance API (market data source)
-- Supabase database (storage)
+
+- PROJECT_OS
+- Decision Ledger
+- Progress Tracker
+- Validation Rules
+
+Purpose:
+
+System memory and governance.
 
 Responsibilities:
-- Store OHLCV 5-minute BTC/USDT data
-- Maintain historical dataset
-- Ensure data integrity
+
+- preserve project state
+- track decisions
+- prevent scope drift
+- maintain continuity
 
 ────────────────────────────
 
-3. SIGNAL LAYER
+LAYER 2 — DATA LAYER
 
 Purpose:
-Generate trade signals using defined rules.
+
+Acquire and store market information.
 
 Components:
-- Signal Engine (Python logic later)
-- Strategy rules (stored in Project OS)
+
+- Binance Market Data
+- Supabase Database
 
 Responsibilities:
-- Detect liquidity conditions
-- Identify market structure shifts
-- Generate entry signals
 
-Important:
-No trade execution happens here.
+- OHLCV collection
+- historical storage
+- data validation
+- gap detection
+
+Outputs:
+
+Validated market data.
 
 ────────────────────────────
 
-4. RISK LAYER
+LAYER 3 — RESEARCH LAYER
 
 Purpose:
-Control exposure and protect capital.
 
-Rules:
-- Max 1% risk per trade
-- Max 1 open position
-- Mandatory stop-loss
-- Invalid signal rejection
-
-Responsibilities:
-- Approve or reject signals
-- Calculate position size
-- Enforce risk limits
-
-────────────────────────────
-
-5. EXECUTION LAYER
-
-Purpose:
-Send trades to Binance Testnet.
+Generate and evaluate hypotheses.
 
 Components:
-- Binance API
-- Order execution script (future implementation)
+
+- Hypothesis Registry
+- Research Log
+- Statistical Analysis
 
 Responsibilities:
-- Place market/limit orders
-- Set stop loss and take profit
-- Confirm order execution
 
-Important:
-No strategy logic here.
+- create hypotheses
+- test assumptions
+- reject weak ideas
+- document findings
+
+Outputs:
+
+Validated or rejected hypotheses.
 
 ────────────────────────────
 
-6. CONTROL & MONITORING LAYER
+LAYER 4 — SIGNAL LAYER
 
 Purpose:
-System management and user control.
 
-Components:
-- Telegram bot (control interface)
-- GitHub (state tracking)
-- Supabase logs (event history)
+Convert validated hypotheses into executable rules.
 
 Responsibilities:
-- Show system status
-- Allow manual kill switch
-- Display open trades
-- Log all system activity
+
+- detect setups
+- generate entries
+- generate exits
+- produce signals
+
+Restrictions:
+
+- no trade execution
+- no position sizing
+- no capital management
+
+Outputs:
+
+Trade signals only.
 
 ────────────────────────────
 
-7. SYSTEM FLOW (SIMPLIFIED)
+LAYER 5 — RISK LAYER
 
-Market Data → Data Layer → Signal Layer → Risk Layer → Execution Layer → Binance Testnet
+Purpose:
 
-All events are logged to Supabase.
+Protect capital.
 
-Telegram monitors everything.
+Responsibilities:
+
+- position sizing
+- risk calculation
+- trade approval
+- exposure limits
+
+Authority:
+
+Risk Layer may veto any trade.
+
+No component may override Risk Layer.
 
 ────────────────────────────
 
-8. DESIGN PRINCIPLE
+LAYER 6 — EXECUTION LAYER
 
-- Each layer must be independent
-- Signal logic must never execute trades directly
-- Risk layer must always approve trades
-- Execution layer must not generate signals
+Purpose:
 
-This separation prevents system failure and overfitting.
+Execute approved trades.
+
+Responsibilities:
+
+- place orders
+- cancel orders
+- manage positions
+- report execution status
+
+Restrictions:
+
+Execution Layer cannot create signals.
+
+────────────────────────────
+
+LAYER 7 — AUDIT LAYER
+
+Purpose:
+
+Create complete traceability.
+
+Responsibilities:
+
+- store signals
+- store approvals
+- store executions
+- store failures
+- store system events
+
+Rule:
+
+If an event is not logged, it is considered not to have occurred.
+
+────────────────────────────
+
+LAYER 8 — CONTROL LAYER
+
+Purpose:
+
+Human interaction and oversight.
+
+Components:
+
+- Telegram Bot
+- Kill Switch
+- Monitoring Dashboard
+
+Responsibilities:
+
+- status reporting
+- emergency controls
+- operator visibility
+
+────────────────────────────
+
+MASTER SYSTEM FLOW
+
+Market Data
+
+↓
+
+Data Layer
+
+↓
+
+Research Layer
+
+↓
+
+Signal Layer
+
+↓
+
+Risk Layer
+
+↓
+
+Execution Layer
+
+↓
+
+Audit Layer
+
+↓
+
+Monitoring Layer
+
+────────────────────────────
+
+KILL SWITCH RULE
+
+Any critical failure may activate the kill switch.
+
+Kill switch actions:
+
+1. Cancel pending orders
+2. Close positions
+3. Disable signal generation
+4. Create audit record
+5. Notify operator
+
+────────────────────────────
+
+ARCHITECTURE CHANGE POLICY
+
+No architectural change is allowed without:
+
+- Decision Ledger update
+- Risk review
+- Impact analysis
+- Progress update
+
+END OF DOCUMENT
