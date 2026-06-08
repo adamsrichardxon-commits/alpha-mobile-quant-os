@@ -1,94 +1,95 @@
-SYSTEM BOOTSTRAP FILE
+ALPHAMOBILE QUANT OS — BOOTSTRAP
 
-This file is used to reconstruct the entire system from scratch at any time.
+PURPOSE
 
-Purpose:
-Ensure system recovery, continuity, and full re-initialization capability.
+Allow complete reconstruction of project state.
 
-If ALL other files are lost or corrupted, this file is sufficient to rebuild the system.
-
-────────────────────────────
-
-1. SYSTEM IDENTITY
-
-We are building a BTC/USDT automated trading research system.
-
-Core principle:
-No trading without validated statistical edge.
+This file is the emergency recovery guide.
 
 ────────────────────────────
 
-2. SYSTEM STRUCTURE
+BOOTSTRAP ORDER
 
-PROJECT_OS contains the following modules:
+STEP 1
 
-- 01_MISSION.md → defines system goal
-- 02_CONSTRAINTS.md → defines hard limits
-- 03_ARCHITECTURE.md → defines system design
-- 04_DECISIONS.md → tracks all system decisions
-- 05_ROADMAP.md → defines execution phases
-- 06_PROGRESS.md → tracks current state
-- 07_RISK_REGISTER.md → tracks system risks
-- 08_BACKLOG.md → stores future ideas
-- 09_RESEARCH_LOG.md → stores experiments
-- 10_VALIDATION.md → defines pass/fail rules
-- 11_ASSUMPTIONS.md → tracks hidden assumptions
-- 12_BOOTSTRAP.md → system recovery file
-- 13_TECHNICAL_DEBT.md → tracks system flaws
+Load this file.
 
-────────────────────────────
+STEP 2
 
-3. CORE EXECUTION FLOW
+Load:
 
-Data → Signal Engine → Risk Engine → Execution Engine → Logging
+06_PROGRESS.md
 
-No step can bypass validation or risk control.
+STEP 3
 
-────────────────────────────
+Load:
 
-4. CRITICAL RULES
+04_DECISIONS.md
 
-- No live trading without validation
-- No strategy without research evidence
-- No execution without risk approval
-- No assumption without explicit documentation
+15_DECISION_LEDGER.md
 
-────────────────────────────
+STEP 4
 
-5. RECOVERY INSTRUCTIONS
+Load:
 
-If system state is lost:
+05_ROADMAP.md
 
-Step 1:
-Recreate PROJECT_OS structure
+STEP 5
 
-Step 2:
-Restore files in numerical order
+Load:
 
-Step 3:
-Load decisions from 04_DECISIONS.md
+07_RISK_REGISTER.md
 
-Step 4:
-Check progress in 06_PROGRESS.md
+10_VALIDATION.md
 
-Step 5:
-Resume from ROADMAP phase
+11_ASSUMPTIONS.md
+
+STEP 6
+
+Resume current active task.
 
 ────────────────────────────
 
-6. MINIMUM REQUIRED KNOWLEDGE
+PROJECT IDENTITY
 
-To operate the system, only these are required:
+Project:
 
-- System structure (PROJECT_OS files)
-- Current progress state
-- Validated strategies only
-- Risk rules
+AlphaMobile Quant OS
 
-No external memory is required.
+Objective:
+
+Determine existence of statistically valid trading edge.
+
+────────────────────────────
+
+RECOVERY PRINCIPLES
+
+Progress File is authoritative.
+
+Decision Ledger is historical truth.
+
+Validation Framework governs approvals.
+
+Roadmap governs execution sequence.
+
+────────────────────────────
+
+RECOVERY RULE
+
+If conflicting information exists:
+
+Priority Order:
+
+1. Constraints
+2. Validation Framework
+3. Active Decisions
+4. Progress State
+5. Roadmap
 
 ────────────────────────────
 
 FINAL PRINCIPLE
 
-This system is designed to be fully recoverable, deterministic, and independent of any single AI session or memory state.
+Project continuity must never depend on conversation history.
+
+END OF DOCUMENT
