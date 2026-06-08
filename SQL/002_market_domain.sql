@@ -82,19 +82,23 @@ create table if not exists data_ingestion_runs (
 
     constraint fk_ingestion_asset
         foreign key (asset_id)
-        references assets(id),
+        references assets(id)
+        on delete restrict,
 
     constraint fk_ingestion_timeframe
         foreign key (timeframe_id)
-        references timeframes(id),
+        references timeframes(id)
+        on delete restrict,
 
     constraint fk_ingestion_source
         foreign key (data_source_id)
-        references data_sources(id),
+        references data_sources(id)
+        on delete restrict,
 
     constraint fk_ingestion_collector
         foreign key (collector_version_id)
         references collector_versions(id)
+        on delete restrict
 
 );
 
@@ -134,15 +138,18 @@ create table if not exists market_candles (
 
     constraint fk_candle_asset
         foreign key (asset_id)
-        references assets(id),
+        references assets(id)
+        on delete restrict,
 
     constraint fk_candle_timeframe
         foreign key (timeframe_id)
-        references timeframes(id),
+        references timeframes(id)
+        on delete restrict,
 
     constraint fk_candle_ingestion
         foreign key (ingestion_run_id)
-        references data_ingestion_runs(id),
+        references data_ingestion_runs(id)
+        on delete restrict,
 
     constraint uq_market_candle
         unique (
@@ -214,11 +221,13 @@ create table if not exists candle_integrity_checks (
 
     constraint fk_integrity_asset
         foreign key (asset_id)
-        references assets(id),
+        references assets(id)
+        on delete restrict,
 
     constraint fk_integrity_timeframe
         foreign key (timeframe_id)
         references timeframes(id)
+        on delete restrict
 
 );
 
@@ -258,6 +267,46 @@ on market_candles
     timeframe_id,
     open_time
 );
+
+-- =====================================================
+-- IMMUTABILITY PROTECTION
+-- =====================================================
+
+create or replace function
+prevent_market_candle_changes()
+returns trigger
+language plpgsql
+as
+$$
+begin
+
+    raise exception
+    'MARKET_CANDLES_IMMUTABLE';
+
+    return null;
+
+end;
+$$;
+
+create trigger trg_market_candle_no_update
+
+before update
+on market_candles
+
+for each row
+
+execute function
+prevent_market_candle_changes();
+
+create trigger trg_market_candle_no_delete
+
+before delete
+on market_candles
+
+for each row
+
+execute function
+prevent_market_candle_changes();
 
 -- =====================================================
 -- SCHEMA VERSION
