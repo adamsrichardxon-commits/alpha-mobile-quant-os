@@ -1,83 +1,161 @@
-SYSTEM VALIDATION CRITERIA
+ALPHAMOBILE QUANT OS — VALIDATION FRAMEWORK
 
-This file defines the EXACT conditions a strategy must satisfy before it is considered valid.
+PURPOSE
+
+Validation exists to reject weak systems.
+
+The burden of proof is on the strategy.
+
+────────────────────────────
+
+TIER SYSTEM
+
+Tier 1
+
+Minimum:
+100 trades
 
 Purpose:
-Prevent weak, overfitted, or random strategies from entering live or automated trading.
+Early exploration
 
-No strategy can bypass these rules.
-
-────────────────────────────
-
-1. MINIMUM SAMPLE REQUIREMENT
-
-- At least 500 completed trades required
-- Trades must be from historical backtesting AND/OR forward testing
-- Small sample results are INVALID
+Cannot be used for deployment decisions.
 
 ────────────────────────────
 
-2. PROFITABILITY REQUIREMENT
+Tier 2
 
-A strategy is ONLY VALID if:
+Minimum:
+500 trades
 
-- Net expectancy > 0
-- Profit Factor ≥ 1.2 minimum
-- Consistent performance across multiple market conditions
+Purpose:
+Preliminary evidence
 
-────────────────────────────
-
-3. RISK REQUIREMENT
-
-- Maximum drawdown must be ≤ 20%
-- No uncontrolled loss streaks
-- Each trade must respect fixed risk (1% max)
+Cannot be considered production ready.
 
 ────────────────────────────
 
-4. ROBUSTNESS REQUIREMENT
+Tier 3
 
-Strategy must pass:
+Minimum:
+1000 trades
+
+Purpose:
+Serious evaluation
+
+Minimum acceptable level.
+
+────────────────────────────
+
+Tier 4
+
+Minimum:
+3000 trades
+
+Purpose:
+Institutional confidence
+
+Preferred level.
+
+────────────────────────────
+
+BENCHMARK REQUIREMENT
+
+Every strategy must outperform:
+
+Benchmark A:
+Random Entry
+
+Benchmark B:
+Simple Trend Following
+
+Benchmark C:
+Risk-adjusted Hold Strategy
+
+Failure against benchmarks:
+
+AUTOMATIC REJECTION
+
+────────────────────────────
+
+PROFITABILITY REQUIREMENTS
+
+Expectancy:
+Positive
+
+Profit Factor:
+Minimum 1.20
+
+Preferred:
+1.50+
+
+Average R Multiple:
+Positive
+
+────────────────────────────
+
+RISK REQUIREMENTS
+
+Maximum Drawdown:
+≤ 20%
+
+Risk per Trade:
+≤ 1%
+
+Position Limits:
+Enforced
+
+────────────────────────────
+
+ROBUSTNESS REQUIREMENTS
+
+Must pass:
 
 - Out-of-sample testing
-- Walk-forward validation
-- Multiple market regime testing (trend, range, volatility spikes)
+- Walk-forward testing
+- Regime testing
+- Stress testing
+
+Failure of any test:
+
+REJECTION
 
 ────────────────────────────
 
-5. STABILITY REQUIREMENT
+OVERFITTING DETECTION
 
-- Performance must not rely on a single market condition
-- No single trade cluster may dominate profits
-- Results must be reproducible
+Automatic rejection if:
 
-────────────────────────────
-
-6. OVERFITTING PROTECTION
-
-A strategy is INVALID if:
-
-- It only works on historical data but fails in unseen data
-- It depends on overly specific parameter tuning
-- It breaks under minor market variation
+- parameter sensitivity is excessive
+- edge disappears in unseen data
+- performance depends on isolated trade clusters
 
 ────────────────────────────
 
-7. APPROVAL GATES
+APPROVAL GATES
 
-A strategy moves forward ONLY IF:
+Gate 1:
+Research Approval
 
-Phase 1: Research → COMPLETE
-Phase 2: Backtesting → PASS
-Phase 3: Forward Testing → PASS
-Phase 4: Validation Metrics → PASS
+Gate 2:
+Backtest Approval
 
-If ANY phase fails → strategy is REJECTED
+Gate 3:
+Validation Approval
+
+Gate 4:
+Paper Trading Approval
+
+Gate 5:
+Automation Approval
+
+Each gate requires explicit pass status.
 
 ────────────────────────────
 
 FINAL RULE
 
-No live trading or automation is allowed unless ALL validation criteria are satisfied.
+A strategy is considered INVALID until proven VALID.
 
-Failure to meet validation = automatic rejection, regardless of perceived potential.
+Not the reverse.
+
+END OF DOCUMENT
