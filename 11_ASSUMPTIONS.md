@@ -1,109 +1,165 @@
-SYSTEM ASSUMPTIONS REGISTER
+ALPHAMOBILE QUANT OS — ASSUMPTIONS REGISTER
 
-This file tracks ALL assumptions the system depends on.
+PURPOSE
 
-Purpose:
-Make hidden assumptions visible so they can be tested, validated, or removed.
+Track all assumptions.
 
-Any untested assumption is considered a SYSTEM RISK.
+Assumptions are not facts.
 
-────────────────────────────
-
-FORMAT FOR ALL ENTRIES:
-
-ASSUMPTION ID:
-Date:
-Assumption:
-Why it is assumed:
-Risk if false:
-Validation method:
-Status: (UNTESTED / VALIDATED / INVALIDATED)
+Assumptions are temporary beliefs awaiting evidence.
 
 ────────────────────────────
 
-CORE SYSTEM ASSUMPTIONS
+STATUS DEFINITIONS
 
-────────────────────────────
-
-ASSUMPTION 001
-Date: 2026-06-08
-Assumption:
-Liquidity sweeps followed by structure shifts produce statistically meaningful trading opportunities.
-
-Why it is assumed:
-Based on Smart Money Concepts theory
-
-Risk if false:
-Entire strategy has no real edge
-
-Validation method:
-Backtesting on large historical dataset
-
-Status:
 UNTESTED
 
+Evidence does not exist.
+
+VALIDATED
+
+Evidence supports assumption.
+
+INVALIDATED
+
+Evidence contradicts assumption.
+
+KNOWN LIMITATION
+
+Assumption known to be imperfect.
+
 ────────────────────────────
 
-ASSUMPTION 002
-Date: 2026-06-08
-Assumption:
-BTC/USDT behaves consistently enough on 5-minute timeframe to allow pattern-based trading.
+A-001
 
-Why it is assumed:
-Market microstructure exhibits repeatable behavior patterns
+Assumption
 
-Risk if false:
-Signal engine becomes unreliable and random
+Liquidity sweeps followed by structure shifts may create positive expectancy opportunities.
 
-Validation method:
-Multi-regime backtesting
+Status
 
-Status:
 UNTESTED
 
+Validation Method
+
+Large-sample backtesting
+
+Risk if False
+
+Core strategy invalid.
+
 ────────────────────────────
 
-ASSUMPTION 003
-Date: 2026-06-08
-Assumption:
-Binance testnet execution accurately reflects real market execution conditions.
+A-002
 
-Why it is assumed:
-Testnet simulates real trading infrastructure
+Assumption
 
-Risk if false:
-Real performance will differ significantly from testing
+BTC/USDT contains repeatable short-term behavioral patterns.
 
-Validation method:
-Compare testnet vs historical execution behavior
+Status
 
-Status:
 UNTESTED
 
+Validation Method
+
+Regime testing
+
+Risk if False
+
+Pattern-based trading invalid.
+
 ────────────────────────────
 
-ASSUMPTION 004
-Date: 2026-06-08
-Assumption:
-A fixed 1% risk per trade is optimal for long-term survival.
+A-003
 
-Why it is assumed:
-Standard risk management practice in trading systems
+Assumption
 
-Risk if false:
-Either excessive drawdown or underperformance
+Market behavior changes over time.
 
-Validation method:
-Risk simulation testing
+Status
 
-Status:
+VALIDATED
+
+Validation Method
+
+Historical observation
+
+Risk if Ignored
+
+Strategy decay.
+
+────────────────────────────
+
+A-004
+
+Assumption
+
+Binance Testnet differs materially from live trading conditions.
+
+Status
+
+KNOWN LIMITATION
+
+Reason
+
+No true liquidity dynamics.
+No real slippage behavior.
+No market impact.
+
+Risk
+
+False confidence.
+
+Mitigation
+
+Never treat testnet results as production proof.
+
+────────────────────────────
+
+A-005
+
+Assumption
+
+Fixed 1% risk per trade is sufficiently conservative.
+
+Status
+
 UNTESTED
 
+Validation Method
+
+Risk simulation
+
+Risk if False
+
+Suboptimal growth or excessive drawdown.
+
 ────────────────────────────
 
-RULES
+A-006
 
-- All assumptions must be explicitly documented
-- No assumption can be treated as fact without validation
-- Invalid assumptions must be removed from system logic
-- Assumptions directly affect system reliability
+Assumption
+
+A strategy can lose effectiveness without obvious warning.
+
+Status
+
+VALIDATED
+
+Validation Method
+
+Observed across financial markets.
+
+Risk if Ignored
+
+Undetected edge decay.
+
+────────────────────────────
+
+MASTER RULE
+
+Every major strategy component must have a corresponding assumption.
+
+No hidden assumptions allowed.
+
+END OF DOCUMENT
