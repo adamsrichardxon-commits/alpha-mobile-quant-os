@@ -1,79 +1,107 @@
-SYSTEM BACKLOG
+ALPHAMOBILE QUANT OS — BACKLOG
 
-This file stores ALL future ideas, improvements, and features that are NOT yet implemented.
+PURPOSE
 
-Purpose:
-Prevent scope creep and keep the system stable.
+Store future ideas without allowing scope creep.
 
-Nothing in this file is active.
+Backlog items are not commitments.
 
-Everything here is pending evaluation.
-
-────────────────────────────
-
-FORMAT FOR ALL ITEMS:
-
-ID:
-Idea:
-Description:
-Reason:
-Expected Benefit:
-Complexity Level:
-Status: (PENDING / REJECTED / APPROVED FOR FUTURE)
+Backlog items are candidates for evaluation.
 
 ────────────────────────────
 
-CURRENT BACKLOG ITEMS
+BACKLOG ENTRY FORMAT
+
+ID
+
+Title
+
+Expected Benefit
+
+Complexity Score
+
+Risk Impact
+
+Validation Requirement
+
+Decision Status
 
 ────────────────────────────
 
-BACKLOG ITEM 001
-ID: B-001
-Idea: Add multi-timeframe confirmation (1H + 5M alignment)
-Description: Use higher timeframe trend filter before 5-minute entries
-Reason: Improve signal accuracy
-Expected Benefit: Higher win rate, fewer false signals
-Complexity Level: Medium
-Status: PENDING
+B-001
+
+Title
+
+Multi-Timeframe Confirmation
+
+Expected Benefit
+
+Potential signal quality improvement
+
+Complexity Score
+
+5
+
+Risk Impact
+
+Medium
+
+Validation Requirement
+
+Independent backtest
+
+Decision Status
+
+PENDING
 
 ────────────────────────────
 
-BACKLOG ITEM 002
-ID: B-002
-Idea: Add news filter system
-Description: Block trades during high-impact news events
-Reason: Avoid volatility spikes
-Expected Benefit: Reduced drawdowns
-Complexity Level: High
-Status: PENDING
+B-002
+
+Title
+
+Market Regime Classification
+
+Expected Benefit
+
+Adaptive strategy behavior
+
+Complexity Score
+
+7
+
+Risk Impact
+
+High
+
+Validation Requirement
+
+Research phase required
+
+Decision Status
+
+PENDING
 
 ────────────────────────────
 
-BACKLOG ITEM 003
-ID: B-003
-Idea: Add machine learning optimization layer
-Description: Use ML to optimize parameters after validation
-Reason: Improve performance over time
-Expected Benefit: Adaptive strategy tuning
-Complexity Level: Very High
-Status: PENDING
+BACKLOG ADMISSION RULES
+
+Every backlog item must include:
+
+- expected benefit
+- complexity score
+- risk impact
+- validation requirement
 
 ────────────────────────────
 
-BACKLOG ITEM 004
-ID: B-004
-Idea: Add Telegram real-time trade dashboard
-Description: Send live trade updates and system status
-Reason: Improve monitoring and control
-Expected Benefit: Better visibility
-Complexity Level: Low
-Status: PENDING
+PROMOTION RULE
 
-────────────────────────────
+An item may move from backlog to roadmap only if:
 
-RULES
+1. Risk reviewed
+2. Complexity reviewed
+3. Decision recorded
+4. Resource impact assessed
 
-- Nothing in this file is active
-- No backlog item may be implemented without moving through ROADMAP first
-- Backlog items must be evaluated before execution
-- Backlog is NOT allowed to affect current system behavior
+END OF DOCUMENT
