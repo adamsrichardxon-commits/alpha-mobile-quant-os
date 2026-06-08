@@ -62,7 +62,15 @@ create table if not exists data_ingestion_runs (
 
     records_processed integer not null default 0,
 
-    status text not null,
+    status text not null
+    check (
+        status in (
+            'PENDING',
+            'RUNNING',
+            'SUCCESS',
+            'FAILED'
+        )
+    ),
 
     details_json jsonb,
 
@@ -156,7 +164,25 @@ create table if not exists market_candles (
         check (low <= close),
 
     constraint chk_volume_non_negative
-        check (volume >= 0)
+        check (volume >= 0),
+
+    constraint chk_high_ge_low
+        check (high >= low),
+
+    constraint chk_open_positive
+        check (open > 0),
+
+    constraint chk_high_positive
+        check (high > 0),
+
+    constraint chk_low_positive
+        check (low > 0),
+
+    constraint chk_close_positive
+        check (close > 0),
+
+    constraint chk_close_after_open
+        check (close_time > open_time)
 
 );
 
@@ -174,7 +200,13 @@ create table if not exists candle_integrity_checks (
 
     check_type text not null,
 
-    status text not null,
+    status text not null
+    check (
+        status in (
+            'PASS',
+            'FAIL'
+        )
+    ),
 
     details_json jsonb,
 
@@ -217,6 +249,15 @@ on data_ingestion_runs(asset_id);
 create index if not exists
 idx_ingestion_timeframe
 on data_ingestion_runs(timeframe_id);
+
+create index if not exists
+idx_market_candle_lookup
+on market_candles
+(
+    asset_id,
+    timeframe_id,
+    open_time
+);
 
 -- =====================================================
 -- SCHEMA VERSION
