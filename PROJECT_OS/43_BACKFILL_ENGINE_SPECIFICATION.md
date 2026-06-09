@@ -124,9 +124,15 @@ PHASE 5
 
 1m Historical Backfill
 
-Research Window Priority
+Priority Window
 
-Full History Optional
+Most Recent 12 Months
+
+Extended Historical Backfill
+
+Optional
+
+Subject To Storage Review
 
 ────────────────────────────
 
